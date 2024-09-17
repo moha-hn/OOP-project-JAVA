@@ -2,41 +2,31 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Departement {
-    private String id_dept;
+    private int id;
     private String nom;
     private List<Etudiant> etudiants;
-    private List<Cours> cours;
 
-    public Departement(String id_dept, String nom) {
-        this.setId_dept(id_dept);
+    public Departement(int id, String nom) {
+        this.id=id;
         this.nom = nom;
         this.etudiants = new ArrayList<>();
-        this.cours = new ArrayList<>();
     }
 
-    public String getNom() { return nom; }
-    public void setNom(String nom) { this.nom = nom; }
 
     public List<Etudiant> getEtudiants() { return etudiants; }
-    public void addEtudiant(Etudiant etudiant) { this.etudiants.add(etudiant); }
-
-    public List<Cours> getCours() { return cours; }
-    public void addCours(Cours cours) { this.cours.add(cours); }
-
-    public List<Note> rechercherNotes(String etudiantId) {
-        for (Etudiant etudiant : etudiants) {
-            if (etudiant.getId().equals(etudiantId)) {
-                return etudiant.getNotes();
-            }
-        }
-        return new ArrayList<>();
+    
+    public void addEtudiant(Etudiant etudiant) { 
+    	this.etudiants.add(etudiant); 
     }
 
-	public String getId_dept() {
-		return id_dept;
+	public int getId() {
+		return id;
 	}
 
-	public void setId_dept(String id_dept) {
-		this.id_dept = id_dept;
+	public void setId(int id) {
+		this.id = id;
 	}
+
+	public String getNom() { return nom; }
+    public void setNom(String nom) { this.nom = nom; }
 }

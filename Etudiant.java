@@ -2,22 +2,30 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Etudiant {
-    private String id_etd;
+    private int id;
     private String nom;
     private String prenom;
-    private String niveau;
+    private int niveau; // New attribute for student level
     private List<Note> notes;
 
-    public Etudiant(String id_etd, String nom, String prenom, String niveau) {
-        this.id_etd = id_etd;
+    public Etudiant(int id, String nom, String prenom, int niveau) {
+        this.id = id;
         this.nom = nom;
         this.prenom = prenom;
         this.niveau = niveau;
         this.notes = new ArrayList<>();
     }
 
-    public String getId() { return id_etd; }
-    public void setId(String id_etd) { this.id_etd = id_etd; }
+    // Getters and setters for the new attribute
+    public int getNiveau() {
+        return niveau;
+    }
+
+    public void setNiveau(int niveau) {
+        this.niveau = niveau;
+    }
+    public int getId() { return id; }
+    public void setId(int id) { this.id = id; }
 
     public String getNom() { return nom; }
     public void setNom(String nom) { this.nom = nom; }
@@ -25,21 +33,26 @@ public class Etudiant {
     public String getPrenom() { return prenom; }
     public void setPrenom(String prenom) { this.prenom = prenom; }
 
-    public String getNiveau() { return niveau; }
-    public void setNiveau(String niveau) { this.niveau = niveau; }
 
     public List<Note> getNotes() { return notes; }
-    public void addNote(Note note) { this.notes.add(note); }
-
-    public double calculerMoyenne() {
-        double total = 0;
-        double sommeCoefficients = 0;
-
-        for (Note note : notes) {
-            total += note.getNote() * note.getCoefficient();
-            sommeCoefficients += note.getCoefficient();
-        }
-
-        return sommeCoefficients == 0 ? 0 : total / sommeCoefficients;
+    
+    
+    public void addNote(Note note) { this.notes.add(note);}
+    
+    public float calculermoyenne() {
+    	float somme=0;
+    	for(Note note: notes) {
+    		
+    		somme+=note.moyenne();
+    	}
+		return somme/notes.size();
     }
-}
+    
+    public void displaynoteetd(){
+    	System.out.println("cours -- tp --controle -- examen --moyenne"); 
+    	for(Note note: notes) {	
+    		System.out.println(note.getCodeCours()+" -- "+note.getTp()+" -- "+note.getControle()+ " -- "+note.getExamen()+" -- "+note.moyenne());    	
+    	}
+    }
+  }
+

@@ -1,25 +1,56 @@
 public class Note {
-    private String code_cours;
-    private String id_etd;
-    private double note;
-    private double coefficient;
+    private int idcours;
+    private int idEtudiant;
+    private double tp;
+    private double controle;
+    private double examen;
+    private int coeftp;
+    private int coefcontrole;
+    private int coefexamen;
 
-    public Note(String code_cours, String id_etd, double note, double coefficient) {
-        this.code_cours = code_cours;
-        this.id_etd = id_etd;
-        this.note = note;
-        this.coefficient = coefficient;
+
+
+    Note(int idcours, int idEtudiant, double tp,double controle,double examen,int coeftp,int coefcontrole,int coefexamen) {
+        this.idcours = idcours;
+        this.idEtudiant = idEtudiant;
+        this.tp=tp;
+        this.controle=controle;
+        
+        this.examen=examen;
+	    this.coeftp=coeftp;
+	    this.coefcontrole=coefcontrole;
+	    this.coefexamen=coefexamen;
     }
 
-    public String getCode() { return code_cours; }
-    public void setCode(String code_cours) { this.code_cours = code_cours; }
+    public int getCodeCours() { return idcours; }
+    public void setCodeCours(int idcours) { this.idcours = idcours; }
 
-    public String getIdEtudiant() { return id_etd; }
-    public void setIdEtudiant(String id_etd) { this.id_etd = id_etd; }
+    public int getIdEtudiant() { return idEtudiant; }
+    public void setIdEtudiant(int idEtudiant) { this.idEtudiant = idEtudiant; }
+    public double getTp() {
+		return tp;
+	}
 
-    public double getNote() { return note; }
-    public void setNote(double note) { this.note = note; }
+	public void setTp(double tp) {
+		this.tp = tp;
+	}
 
-    public double getCoefficient() { return coefficient; }
-    public void setCoefficient(double coefficient) { this.coefficient = coefficient; }
+	public double getControle() {
+		return controle;
+	}
+
+	public void setControle(double controle) {
+		this.controle = controle;
+	}
+
+	public double getExamen() {
+		return examen;
+	}
+
+	public void setExamen(double examen) {
+		this.examen = examen;
+	}
+	public float moyenne(){
+		return (float) ((tp*coeftp+examen*coefexamen+controle*coefcontrole)/(coeftp+coefexamen+coefcontrole));
+	}
 }
